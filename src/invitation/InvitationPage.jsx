@@ -20,6 +20,13 @@ const COPY = {
         married: "We're Married!",
         timelineTitle: 'Wedding Timeline',
         mapButton: 'View on Map',
+        ceremony: {
+            time: '16:00',
+            title: 'Ceremony',
+            location: '',
+            address: '',
+            map: '',
+        },
         reception: {
             time: '17:30',
             title: 'Reception',
@@ -51,6 +58,13 @@ const COPY = {
         married: 'Մենք ամուսնացանք!',
         timelineTitle: 'Օրվա ծրագիր',
         mapButton: 'Դիտել քարտեզում',
+        ceremony: {
+            time: '16:00',
+            title: 'Պսակադրություն',
+            location: 'Շուտով',
+            address: '',
+            map: '',
+        },
         reception: {
             time: '17:30',
             title: 'Հարսանյաց Հանդես',
@@ -354,7 +368,7 @@ export default function InvitationPage() {
                     <section className="timeline-block">
                         <img
                             className="timeline-block__bg"
-                            src="/invitation/gallery-3.webp"
+                            src="/invitation/gallery-2.webp"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
@@ -362,6 +376,48 @@ export default function InvitationPage() {
                             <h2 className="timeline-block__heading">
                                 {t.timelineTitle}
                             </h2>
+                            <img
+                                className="timeline-block__icon"
+                                src="/invitation/rings.webp"
+                                alt=""
+                            />
+                            <p className="timeline-block__time">
+                                {t.ceremony.time}
+                            </p>
+                            <h3 className="timeline-block__title">
+                                {t.ceremony.title}
+                            </h3>
+                            {t.ceremony.location ? (
+                                <p className="timeline-block__place">
+                                    {t.ceremony.location}
+                                </p>
+                            ) : null}
+                            {t.ceremony.address ? (
+                                <p className="timeline-block__address">
+                                    {t.ceremony.address}
+                                </p>
+                            ) : null}
+                            {t.ceremony.map ? (
+                                <a
+                                    className="map-btn"
+                                    href={t.ceremony.map}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {t.mapButton}
+                                </a>
+                            ) : null}
+                        </div>
+                    </section>
+
+                    <section className="timeline-block">
+                        <img
+                            className="timeline-block__bg"
+                            src="/invitation/gallery-3.webp"
+                            alt=""
+                        />
+                        <div className="timeline-block__veil" />
+                        <div className="timeline-block__content reveal">
                             <img
                                 className="timeline-block__icon"
                                 src="/invitation/glass.webp"
