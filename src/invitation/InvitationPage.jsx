@@ -1,37 +1,31 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './Invitation.css'
 
-const WEDDING_DATE = new Date('2027-07-26T16:00:00')
+const WEDDING_DATE = new Date('2026-09-04T17:30:00')
+const RESTAURANT_MAP = 'https://maps.app.goo.gl/3LCwDhUc2wCT2oDn7'
 
 const COPY = {
     en: {
-        names: 'Robert & Yelena',
-        namesUpper: 'Robert & Yelena',
+        names: 'Narek & Anna',
+        namesUpper: 'Narek & Anna',
         verse:
             '"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."',
         inviteTitle: 'Wedding Invitation',
         inviteMessage:
-            'Together with their families,\nRobert and Yelena\njoyfully invite you to celebrate\nthe beginning of their new life together.\nYour presence on this special day\nwould mean the world to them.',
-        family: 'Grigoryan and Simonyan\nfamilies',
+            'Together with their families,\nNarek and Anna\njoyfully invite you to celebrate\nthe beginning of their new life together.\nYour presence on this special day\nwould mean the world to them.',
+        family: '',
         quote: '“Therefore what God has joined together, let no one separate.”',
         quoteSource: 'Mark 10:9',
         countdownTitle: 'Counting Down',
         married: "We're Married!",
         timelineTitle: 'Wedding Timeline',
         mapButton: 'View on Map',
-        ceremony: {
-            time: '16:00',
-            title: 'Ceremony',
-            location: 'Saint Sargis Church',
-            address: 'Yerevan, Israelyan St. 21',
-            map: 'https://www.google.com/maps/search/?api=1&query=Saint%20Sargis%20Church%2C%20Yerevan%2C%20Israelyan%20St.%2021',
-        },
         reception: {
-            time: '18:00',
+            time: '17:30',
             title: 'Reception',
-            location: 'Florence Restaurant',
-            address: 'Yerevan, Barbusi St. 64/2',
-            map: 'https://www.google.com/maps/search/?api=1&query=Florence%20Restaurant%2C%20Yerevan%2C%20Barbusi%20St.%2064%2F2',
+            location: 'Jrvezh',
+            address: 'Jrvezh, 19/18',
+            map: RESTAURANT_MAP,
         },
         dressTitle: 'Dress Code',
         dressText:
@@ -43,33 +37,26 @@ const COPY = {
         seconds: 'Seconds',
     },
     am: {
-        names: 'Ռոբերտ եվ Ելենա',
-        namesUpper: 'ՌՈԲԵՐՏ ԵՎ ԵԼԵՆԱ',
+        names: 'Նարեկ եվ Աննա',
+        namesUpper: 'ՆԱՐԵԿ ԵՎ ԱՆՆԱ',
         verse:
             '«Ամբողջ աշխարհում ինձ համար ավելի հարազատ սիրտ չկա, քան քոնը։ Ամբողջ աշխարհում իմ սիրո նման սեր չկա։»',
         inviteTitle: 'Հարսանյաց հրավեր',
         inviteMessage:
-            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու Ռոբերտի և Ելենայի\nհարսանյաց տոնին։ Ձեր\nներկայությունը մեր տոնն առավել\nջերմ ու հիշարժան կդարձնի։',
-        family: 'Գրիգորյան և Սիմոնյան\nընտանիքներ',
+            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու Նարեկի և Աննայի\nհարսանյաց տոնին։ Ձեր\nներկայությունը մեր տոնն առավել\nջերմ ու հիշարժան կդարձնի։',
+        family: '',
         quote: '«Արդ, ինչ որ Աստված միավորեց, մարդը թող չբաժանի»',
         quoteSource: 'ՄԱՐԿՈՍ 10:9',
         countdownTitle: 'Մնացել է',
         married: 'Մենք ամուսնացանք!',
         timelineTitle: 'Օրվա ծրագիր',
         mapButton: 'Դիտել քարտեզում',
-        ceremony: {
-            time: '16:00',
-            title: 'Պսակադրություն',
-            location: 'Սուրբ Սարգիս Եկեղեցի',
-            address: 'ք. Երևան, Իսրայելյան 21',
-            map: 'https://www.google.com/maps/search/?api=1&query=Saint%20Sargis%20Church%2C%20Yerevan%2C%20Israelyan%20St.%2021',
-        },
         reception: {
-            time: '18:00',
+            time: '17:30',
             title: 'Հարսանյաց Հանդես',
-            location: 'Ֆլորենս Ռեստորան',
-            address: 'ք. Երևան, Բարբյուսի 64/2',
-            map: 'https://www.google.com/maps/search/?api=1&query=Florence%20Restaurant%2C%20Yerevan%2C%20Barbusi%20St.%2064%2F2',
+            location: 'Ջրվեժ',
+            address: 'Ջրվեժ, 19/18',
+            map: RESTAURANT_MAP,
         },
         dressTitle: 'Հագուստի ոճ',
         dressText:
@@ -143,8 +130,8 @@ export default function InvitationPage() {
     useEffect(() => {
         document.title =
             lang === 'am'
-                ? 'Ռոբերտ եվ Ելենա — Հարսանյաց հրավեր'
-                : 'Robert & Yelena — Wedding Invitation'
+                ? 'Նարեկ եվ Աննա — Հարսանյաց հրավեր'
+                : 'Narek & Anna — Wedding Invitation'
     }, [lang])
 
     const openInvite = () => {
@@ -247,7 +234,7 @@ export default function InvitationPage() {
                                 <span>Save the</span>
                                 <span>Date</span>
                             </h1>
-                            <p className="cover__date">26 . 07 . 2027</p>
+                            <p className="cover__date">04 . 09 . 2026</p>
                         </div>
                         <img
                             className="cover__wax"
@@ -272,10 +259,10 @@ export default function InvitationPage() {
                         />
                         <div className="hero__veil" />
                         <div className="hero__content">
-                            <div className="hero__stack" aria-label="26.07.2027">
+                            <div className="hero__stack" aria-label="04.09.2026">
+                                <span>04</span>
+                                <span>09</span>
                                 <span>26</span>
-                                <span>07</span>
-                                <span>27</span>
                             </div>
                             <h1 className="hero__names">{t.namesUpper}</h1>
                             <p className="hero__verse">{t.verse}</p>
@@ -284,13 +271,13 @@ export default function InvitationPage() {
 
                     <section className="section section--cream invitation">
                         <div className="invitation__crest-row reveal">
-                            <span>26 / 07</span>
+                            <span>04 / 09</span>
                             <div className="invitation__crest" aria-hidden="true">
-                                <span>R</span>
+                                <span>N</span>
                                 <em>&</em>
-                                <span>Y</span>
+                                <span>A</span>
                             </div>
-                            <span>20 / 27</span>
+                            <span>20 / 26</span>
                         </div>
                         <h2 className="script-title reveal">{t.inviteTitle}</h2>
                         <img
@@ -299,7 +286,9 @@ export default function InvitationPage() {
                             alt=""
                         />
                         <p className="body-copy reveal">{t.inviteMessage}</p>
-                        <p className="invitation__family reveal">{t.family}</p>
+                        {t.family ? (
+                            <p className="invitation__family reveal">{t.family}</p>
+                        ) : null}
                     </section>
 
                     <section className="gallery" aria-label="Gallery">
@@ -365,7 +354,7 @@ export default function InvitationPage() {
                     <section className="timeline-block">
                         <img
                             className="timeline-block__bg"
-                            src="/invitation/gallery-2.webp"
+                            src="/invitation/gallery-3.webp"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
@@ -373,42 +362,6 @@ export default function InvitationPage() {
                             <h2 className="timeline-block__heading">
                                 {t.timelineTitle}
                             </h2>
-                            <img
-                                className="timeline-block__icon"
-                                src="/invitation/rings.webp"
-                                alt=""
-                            />
-                            <p className="timeline-block__time">
-                                {t.ceremony.time}
-                            </p>
-                            <h3 className="timeline-block__title">
-                                {t.ceremony.title}
-                            </h3>
-                            <p className="timeline-block__place">
-                                {t.ceremony.location}
-                            </p>
-                            <p className="timeline-block__address">
-                                {t.ceremony.address}
-                            </p>
-                            <a
-                                className="map-btn"
-                                href={t.ceremony.map}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {t.mapButton}
-                            </a>
-                        </div>
-                    </section>
-
-                    <section className="timeline-block">
-                        <img
-                            className="timeline-block__bg"
-                            src="/invitation/gallery-3.webp"
-                            alt=""
-                        />
-                        <div className="timeline-block__veil" />
-                        <div className="timeline-block__content reveal">
                             <img
                                 className="timeline-block__icon"
                                 src="/invitation/glass.webp"
@@ -459,11 +412,6 @@ export default function InvitationPage() {
                     <section className="closing">
                         <p className="closing__message reveal">{t.closing}</p>
                     </section>
-
-                    <footer className="footer">
-                        <img src="/invitation/logo-text.webp" alt="iStudio" />
-                        <p>Inspired by iStudio template 1044</p>
-                    </footer>
                 </>
             )}
         </div>
