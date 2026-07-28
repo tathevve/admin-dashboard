@@ -1,5 +1,5 @@
 import React from 'react'
-import RestaurantPage from './restaurant/RestaurantPage'
+import RestaurantPage from '../restaurant/RestaurantPage'
 
 const App = () => <RestaurantPage />
 

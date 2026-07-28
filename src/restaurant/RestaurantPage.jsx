@@ -100,7 +100,7 @@ export default function RestaurantPage() {
                 </div>
                 <div className="hero__veil" aria-hidden="true" />
                 <div className="hero__content">
-                    <p className="hero__script">Fine dining in Yerevan</p>
+                    <p className="hero__script">Ֆլորենս · Yerevan</p>
                     <h1 className="hero__brand">Florence</h1>
                     <p className="hero__line">
                         An intimate room of soft light, seasonal plates, and
@@ -222,9 +222,9 @@ export default function RestaurantPage() {
                     </div>
                     <div
                         className="visit__map reveal reveal-delay-1"
-                        role="img"
                         aria-label="Florence restaurant neighborhood atmosphere"
                     >
+                        <img src="/restaurant/ambiance.jpg" alt="" />
                         <div className="visit__map-label">
                             <strong>Florence</strong>
                             <span>Barbusi 64/2, Yerevan</span>
