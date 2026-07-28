@@ -291,7 +291,7 @@ export default function InvitationPage() {
                                 <em>&</em>
                                 <span>A</span>
                             </div>
-                            <span>20 / 26</span>
+                            <span>2026</span>
                         </div>
                         <h2 className="script-title reveal">{t.inviteTitle}</h2>
                         <img
