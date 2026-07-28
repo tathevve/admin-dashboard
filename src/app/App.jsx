@@ -1,6 +1,6 @@
 import React from 'react'
-import RestaurantPage from '../restaurant/RestaurantPage'
+import InvitationPage from '../invitation/InvitationPage'
 
-const App = () => <RestaurantPage />
+const App = () => <InvitationPage />
 
 export default App
