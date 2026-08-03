@@ -46,7 +46,7 @@
         "ghp": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build && gh-pages -d build"
     },
     "engines": {
-        "node": "18.x"
+        "node": "24.x"
     },
     "eslintConfig": {
         "extends": "react-app"
