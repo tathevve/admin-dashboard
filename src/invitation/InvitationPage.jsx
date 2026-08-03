@@ -2,7 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './Invitation.css'
 
 const WEDDING_DATE = new Date('2026-09-04T17:30:00')
-const RESTAURANT_MAP = 'https://maps.app.goo.gl/3LCwDhUc2wCT2oDn7'
+const CHURCH_MAP =
+    'https://yandex.com/maps/org/surb_mariam_astvatsatsin_yekeghetsi/15438436392/?ll=44.540385%2C40.180340&z=14'
+const HALL_MAP =
+    'https://yandex.com/maps/org/latsio_hol/215251153533/?ll=44.591922%2C40.193585&z=16'
 
 const COPY = {
     en: {
@@ -23,16 +26,16 @@ const COPY = {
         ceremony: {
             time: '16:00',
             title: 'Ceremony',
-            location: '',
-            address: '',
-            map: '',
+            location: 'Surb Mariam Astvatsatsin Church',
+            address: 'Nork-Marash, Yerevan',
+            map: CHURCH_MAP,
         },
         reception: {
             time: '17:30',
             title: 'Reception',
-            location: 'Jrvezh',
-            address: 'Jrvezh, 19/18',
-            map: RESTAURANT_MAP,
+            location: 'Lazio Hall',
+            address: 'Kotayk Region, T-6-29, 31',
+            map: HALL_MAP,
         },
         dressTitle: 'Dress Code',
         dressText:
@@ -61,16 +64,16 @@ const COPY = {
         ceremony: {
             time: '16:00',
             title: 'Պսակադրություն',
-            location: 'Շուտով',
-            address: '',
-            map: '',
+            location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
+            address: 'Նորք-Մարաշ, Երևան',
+            map: CHURCH_MAP,
         },
         reception: {
             time: '17:30',
             title: 'Հարսանյաց Հանդես',
-            location: 'Ջրվեժ',
-            address: 'Ջրվեժ, 19/18',
-            map: RESTAURANT_MAP,
+            location: 'Lazio Hall',
+            address: 'Կոտայքի մարզ, T-6-29, 31',
+            map: HALL_MAP,
         },
         dressTitle: 'Հագուստի ոճ',
         dressText:
@@ -82,8 +85,6 @@ const COPY = {
         seconds: 'Seconds',
     },
 }
-
-const SWATCHES = ['#F7EAEB', '#E6CECE', '#a4b1b8', '#cdd5d5']
 
 function getTimeLeft(now) {
     const diff = Math.max(0, WEDDING_DATE.getTime() - now.getTime())
@@ -232,7 +233,7 @@ export default function InvitationPage() {
                     >
                         <img
                             className="cover__bg"
-                            src="/invitation/cover.webp"
+                            src="/invitation/cover.jpg"
                             alt="Cover Background"
                         />
                         <div className="cover__veil" />
@@ -268,12 +269,12 @@ export default function InvitationPage() {
                     <section className="hero">
                         <img
                             className="hero__bg"
-                            src="/invitation/cover.webp"
+                            src="/invitation/cover.jpg"
                             alt=""
                         />
                         <div className="hero__veil" />
                         <div className="hero__content">
-                            <div className="hero__stack" aria-label="04.09.2026">
+                            <div className="hero__date" aria-label="04.09.2026">
                                 <span>04</span>
                                 <span>09</span>
                                 <span>26</span>
@@ -308,10 +309,11 @@ export default function InvitationPage() {
                     <section className="gallery" aria-label="Gallery">
                         <div className="gallery__track">
                             {[
-                                'gallery-2.webp',
-                                'gallery-3.webp',
-                                'gallery-1.webp',
-                                'cover.webp',
+                                'gallery-1.jpg',
+                                'gallery-4.jpg',
+                                'gallery-5.jpg',
+                                'gallery-6.jpg',
+                                'gallery-7.jpg',
                             ].map((file) => (
                                 <div className="gallery__card" key={file}>
                                     <img src={`/invitation/${file}`} alt="" />
@@ -368,7 +370,7 @@ export default function InvitationPage() {
                     <section className="timeline-block">
                         <img
                             className="timeline-block__bg"
-                            src="/invitation/gallery-2.webp"
+                            src="/invitation/gallery-5.jpg"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
@@ -412,8 +414,8 @@ export default function InvitationPage() {
 
                     <section className="timeline-block">
                         <img
-                            className="timeline-block__bg"
-                            src="/invitation/gallery-3.webp"
+                            className="timeline-block__bg timeline-block__bg--reception"
+                            src="/invitation/hall.jpg"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
@@ -446,26 +448,8 @@ export default function InvitationPage() {
                         </div>
                     </section>
 
-                    <section className="dress">
-                        <img
-                            className="dress__art reveal"
-                            src="/invitation/mono.webp"
-                            alt=""
-                        />
-                        <h2 className="script-title reveal">{t.dressTitle}</h2>
-                        <p className="body-copy reveal">{t.dressText}</p>
-                        <div className="dress__swatches reveal" aria-hidden="true">
-                            {SWATCHES.map((color) => (
-                                <span
-                                    key={color}
-                                    className="dress__swatch"
-                                    style={{ background: color }}
-                                />
-                            ))}
-                        </div>
-                    </section>
-
                     <section className="closing">
+                       
                         <p className="closing__message reveal">{t.closing}</p>
                     </section>
                 </>
