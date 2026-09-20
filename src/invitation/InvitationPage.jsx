@@ -297,13 +297,18 @@ export default function InvitationPage() {
                     </section>
 
                     <section className="day-plan section section--cream">
-                        <div className="day-plan__intro reveal">
+                        <div className="day-plan__cups reveal">
                             <img
-                                className="day-plan__flourish"
-                                src="/invitation/icon-ornament.svg"
+                                src="/invitation/icon-venue.svg"
                                 alt=""
                             />
-                            <h2 className="script-title">{t.timelineTitle}</h2>
+                        </div>
+
+                        <div className="day-plan__header reveal">
+                            <img
+                                src="/invitation/day-plan-header.png"
+                                alt={t.timelineTitle}
+                            />
                         </div>
 
                         <article className="day-card reveal">
@@ -337,11 +342,6 @@ export default function InvitationPage() {
                         </article>
 
                         <article className="day-card reveal">
-                            <img
-                                className="day-card__art day-card__art--venue"
-                                src="/invitation/icon-venue.svg"
-                                alt=""
-                            />
                             <p className="day-card__time">{t.reception.time}</p>
                             <h3 className="day-card__title">{t.reception.title}</h3>
                             <p className="day-card__place">{t.reception.location}</p>
