@@ -144,7 +144,7 @@ a {
     height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: center 18%;
+    object-position: center center;
 }
 
 .cover__veil {
@@ -156,6 +156,15 @@ a {
         transparent 45%,
         rgba(250, 243, 232, 0.35) 72%,
         rgba(230, 220, 207, 0.72) 100%
+    );
+}
+
+.cover__veil--soft {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(250, 243, 232, 0.2) 55%,
+        rgba(78, 52, 46, 0.28) 100%
     );
 }
 
@@ -598,7 +607,7 @@ a {
 }
 
 .timeline-block__bg--reception {
-    object-position: 58% 36%;
+    object-position: center center;
 }
 
 .timeline-block__veil {
@@ -751,12 +760,16 @@ a {
     }
 
     .cover__bg {
-        object-fit: contain;
+        object-fit: cover;
         object-position: center center;
     }
 
     .cover__veil {
-        background: transparent;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(78, 52, 46, 0.22) 100%
+        );
     }
 
     .cover__lace-wrap {
@@ -806,7 +819,7 @@ a {
     }
 
     .timeline-block__bg--reception {
-        object-position: 62% 38%;
+        object-position: center center;
     }
 
     .timeline-block__veil {

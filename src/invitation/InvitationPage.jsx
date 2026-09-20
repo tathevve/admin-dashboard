@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './Invitation.css'
 
 const EVENT_DATE = new Date('2026-10-28T16:00:00')
-const CHURCH_MAP = ''
-const HALL_MAP = ''
+const CHURCH_MAP = 'https://yandex.com/maps/-/CXAKN2no'
+const HALL_MAP = 'https://yandex.com/maps/-/CXAKJEZ-'
 
 const COPY = {
     en: {
@@ -229,17 +229,10 @@ export default function InvitationPage() {
                     >
                         <img
                             className="cover__bg"
-                            src="/invitation/cover.jpg"
+                            src="/invitation/open-bg.png"
                             alt="Cover Background"
                         />
-                        <div className="cover__veil" />
-                        <div className="cover__lace-wrap" aria-hidden="true">
-                            <img
-                                className="cover__lace"
-                                src="/invitation/lace.webp"
-                                alt=""
-                            />
-                        </div>
+                        <div className="cover__veil cover__veil--soft" />
                         <div className="cover__copy">
                             <h1 className="cover__title">
                                 <span>Save the</span>
@@ -366,7 +359,7 @@ export default function InvitationPage() {
                     <section className="timeline-block">
                         <img
                             className="timeline-block__bg"
-                            src="/invitation/gallery-5.jpg"
+                            src="/invitation/church.png"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
@@ -411,7 +404,7 @@ export default function InvitationPage() {
                     <section className="timeline-block">
                         <img
                             className="timeline-block__bg timeline-block__bg--reception"
-                            src="/invitation/hall.jpg"
+                            src="/invitation/hall.png"
                             alt=""
                         />
                         <div className="timeline-block__veil" />
