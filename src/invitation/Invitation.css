@@ -909,7 +909,7 @@ a {
 /* ---------- Closing ---------- */
 .closing {
     padding: 3.5rem 1.25rem max(4rem, calc(env(safe-area-inset-bottom) + 2.5rem));
-    background: var(--white);
+    background: var(--cream);
     text-align: center;
 }
 
