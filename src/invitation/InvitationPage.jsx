@@ -6,80 +6,41 @@ const CHURCH_MAP = 'https://yandex.com/maps/-/CXAKN2no'
 const HALL_MAP = 'https://yandex.com/maps/-/CXAKJEZ-'
 
 const COPY = {
-    en: {
-        names: 'Lina',
-        namesUpper: 'Lina',
-        verse:
-            'May this day be filled with warmth, smiles, and memories that stay in our hearts for years to come.',
-        inviteTitle: 'Birthday & Baptism',
-        inviteMessage:
-            'With love, we invite you\nto celebrate our little Lina’s\nbright and blessed birthday and baptism.',
-        inviteNote:
-            'May this day be filled with warmth, smiles, and memorable moments that will remain in our hearts for many years.',
-        family: 'With love,\nthe Tovmasyan family',
-        quote: '',
-        quoteSource: '',
-        countdownTitle: 'Counting Down',
-        completedText: 'The celebration has begun!',
-        timelineTitle: 'The Day',
-        mapButton: 'View on Map',
-        ceremony: {
-            time: '16:00',
-            title: 'Baptism',
-            location: 'Surb Mariam Astvatsatsin Church',
-            address: 'Nork-Marash, Yerevan',
-            map: CHURCH_MAP,
-        },
-        reception: {
-            time: '17:00',
-            title: 'Celebration',
-            location: 'Safisa Restaurant Complex',
-            address: 'Jrvezh, 2nd district',
-            map: HALL_MAP,
-        },
-        closing: 'With love, we await you',
-        days: 'Days',
-        hours: 'Hours',
-        minutes: 'Minutes',
-        seconds: 'Seconds',
+    names: 'Լինա',
+    namesUpper: 'ԼԻՆԱ',
+    coverTitle: 'Լինայի Սուրբ Մկրտության\nհրավեր',
+    openButton: 'ԲԱՑԵԼ',
+    verse:
+        'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+    inviteTitle: 'Ծնունդ և մկրտություն',
+    inviteMessage:
+        'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու մեր փոքրիկ Լինայի\nծննդյան և մկրտության լուսավոր ու օրհնված տոնին',
+    inviteNote:
+        'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+    family: 'Սիրով հրավիրում են\nԹովմասյանների ընտանիքը',
+    countdownTitle: 'Մնացել է',
+    completedText: 'Տոնը սկսված է!',
+    timelineTitle: 'Օրվա ծրագիր',
+    mapButton: 'Դիտել քարտեզում',
+    ceremony: {
+        time: '16:00',
+        title: 'Մկրտություն',
+        location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
+        address: 'Նորք Մարաշ',
+        map: CHURCH_MAP,
     },
-    am: {
-        names: 'Լինա',
-        namesUpper: 'ԼԻՆԱ',
-        verse:
-            'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
-        inviteTitle: 'Ծնունդ և մկրտություն',
-        inviteMessage:
-            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու մեր փոքրիկ Լինայի\nծննդյան և մկրտության լուսավոր ու օրհնված տոնին',
-        inviteNote:
-            'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
-        family: 'Սիրով հրավիրում են\nԹովմասյանների ընտանիքը',
-        quote: '',
-        quoteSource: '',
-        countdownTitle: 'Մնացել է',
-        completedText: 'Տոնը սկսված է!',
-        timelineTitle: 'Օրվա ծրագիր',
-        mapButton: 'Դիտել քարտեզում',
-        ceremony: {
-            time: '16:00',
-            title: 'Մկրտություն',
-            location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
-            address: 'Նորք Մարաշ',
-            map: CHURCH_MAP,
-        },
-        reception: {
-            time: '17:00',
-            title: 'Տոնական միջոցառում',
-            location: 'Սաֆիսա ռեստորանային համալիր',
-            address: 'Ջրվեժ 2-րդ թաղամաս',
-            map: HALL_MAP,
-        },
-        closing: 'Սիրով սպասում ենք Ձեզ',
-        days: 'Days',
-        hours: 'Hours',
-        minutes: 'Minutes',
-        seconds: 'Seconds',
+    reception: {
+        time: '17:00',
+        title: 'Տոնական միջոցառում',
+        location: 'Սաֆիսա ռեստորանային համալիր',
+        address: 'Ջրվեժ 2-րդ թաղամաս',
+        map: HALL_MAP,
     },
+    closing: 'Սիրով սպասում ենք Ձեզ',
+    days: 'Օր',
+    hours: 'Ժամ',
+    minutes: 'Րոպե',
+    seconds: 'Վրկ',
 }
 
 function getTimeLeft(now) {
@@ -123,14 +84,13 @@ function useReveal(enabled) {
 }
 
 export default function InvitationPage() {
-    const [lang, setLang] = useState('am')
     const [opened, setOpened] = useState(false)
     const [exiting, setExiting] = useState(false)
     const [playing, setPlaying] = useState(false)
     const [now, setNow] = useState(() => new Date())
     const audioRef = useRef(null)
     const rootRef = useReveal(opened)
-    const t = COPY[lang]
+    const t = COPY
     const timeLeft = useMemo(() => getTimeLeft(now), [now])
 
     useEffect(() => {
@@ -139,11 +99,8 @@ export default function InvitationPage() {
     }, [])
 
     useEffect(() => {
-        document.title =
-            lang === 'am'
-                ? 'Լինա — Ծնունդ և մկրտություն'
-                : 'Lina — Birthday & Baptism'
-    }, [lang])
+        document.title = 'Լինա — Ծնունդ և մկրտություն'
+    }, [])
 
     const openInvite = () => {
         if (opened || exiting) return
@@ -176,37 +133,16 @@ export default function InvitationPage() {
     }
 
     return (
-        <div
-            className={`invite${lang === 'am' ? ' invite--hy' : ''}`}
-            ref={rootRef}
-        >
+        <div className="invite invite--hy" ref={rootRef}>
             <audio ref={audioRef} src="/invitation/music.mp3" loop preload="none" />
 
             <div className="controls">
-                <div className="controls__group">
-                    <button
-                        type="button"
-                        className={`chip${lang === 'en' ? ' is-active' : ''}`}
-                        onClick={() => setLang('en')}
-                        aria-label="English"
-                    >
-                        EN
-                    </button>
-                    <button
-                        type="button"
-                        className={`chip${lang === 'am' ? ' is-active' : ''}`}
-                        onClick={() => setLang('am')}
-                        aria-label="Armenian"
-                    >
-                        AM
-                    </button>
-                </div>
-                <div className="controls__group">
+                <div className="controls__group controls__group--end">
                     <button
                         type="button"
                         className="chip chip--icon"
                         onClick={toggleMusic}
-                        aria-label={playing ? 'Pause music' : 'Play music'}
+                        aria-label={playing ? 'Դադար' : 'Երաժշտություն'}
                     >
                         {playing ? '❚❚' : '▶'}
                     </button>
@@ -215,40 +151,42 @@ export default function InvitationPage() {
 
             {!opened && (
                 <div className={`cover${exiting ? ' is-exit' : ''}`}>
-                    <div
-                        className="cover__stage"
-                        onClick={openInvite}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                openInvite()
-                            }
-                        }}
-                        aria-label="Open invitation"
-                    >
+                    <div className="cover__stage">
                         <img
                             className="cover__bg"
                             src="/invitation/open-bg.png"
-                            alt="Cover Background"
+                            alt=""
                         />
                         <div className="cover__veil cover__veil--soft" />
-                        <div className="cover__copy">
-                            <h1 className="cover__title">
-                                <span>Save the</span>
-                                <span>Date</span>
-                            </h1>
-                            <p className="cover__date">28 . 10 . 2026</p>
+
+                        <div className="cover__layout">
+                            <div className="cover__date-block">
+                                <div
+                                    className="cover__date-stack"
+                                    aria-label="28.10.2026"
+                                >
+                                    <span>28</span>
+                                    <span>10</span>
+                                    <span>26</span>
+                                </div>
+                                <span className="cover__date-rule" aria-hidden="true" />
+                            </div>
+
+                            <h1 className="cover__headline">{t.coverTitle}</h1>
+
+                            <div className="cover__open-wrap">
+                                <span className="cover__open-arrow" aria-hidden="true">
+                                    →
+                                </span>
+                                <button
+                                    type="button"
+                                    className="cover__open-btn"
+                                    onClick={openInvite}
+                                >
+                                    {t.openButton}
+                                </button>
+                            </div>
                         </div>
-                        <img
-                            className="cover__wax"
-                            src="/invitation/wax.webp"
-                            alt="Open"
-                            onClick={(event) => {
-                                event.stopPropagation()
-                                openInvite()
-                            }}
-                        />
                     </div>
                 </div>
             )}
