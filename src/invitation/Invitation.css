@@ -395,6 +395,11 @@ a {
     padding: 0 0.15rem;
 }
 
+.invitation__note {
+    margin-top: 1.25rem;
+    font-style: italic;
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(24px);
