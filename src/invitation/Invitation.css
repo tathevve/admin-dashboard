@@ -746,8 +746,8 @@ a {
 }
 
 @media (max-width: 380px) {
-    .cover__title {
-        font-size: 2.45rem;
+    .cover__headline {
+        font-size: 1.4rem;
     }
 
     .hero__date {
@@ -777,30 +777,17 @@ a {
         object-position: center center;
     }
 
-    .cover__veil {
+    .cover__veil--soft {
         background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(78, 52, 46, 0.22) 100%
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(95, 107, 58, 0.06) 100%
         );
     }
 
-    .cover__lace-wrap {
-        right: -2.5rem;
-    }
-
-    .cover__lace {
-        max-width: 400px;
-    }
-
-    .cover__wax {
-        width: 9rem;
-        bottom: 25%;
-        right: 1.5%;
-    }
-
-    .cover__copy {
-        padding: 0 1rem 2.5rem;
+    .cover__headline {
+        max-width: 16rem;
+        font-size: 2.35rem;
     }
 
     .hero__bg {
