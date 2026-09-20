@@ -1,93 +1,50 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './Invitation.css'
 
-const WEDDING_DATE = new Date('2026-09-04T17:30:00')
-const CHURCH_MAP =
-    'https://yandex.com/maps/org/surb_mariam_astvatsatsin_yekeghetsi/15438436392/?ll=44.540385%2C40.180340&z=14'
-const HALL_MAP =
-    'https://yandex.com/maps/org/latsio_hol/215251153533/?ll=44.591922%2C40.193585&z=16'
+const EVENT_DATE = new Date('2026-10-28T16:00:00')
+const CHURCH_MAP = 'https://yandex.com/maps/-/CXAKN2no'
+const HALL_MAP = 'https://yandex.com/maps/-/CXAKJEZ-'
 
 const COPY = {
-    en: {
-        names: 'Narek & Anna',
-        namesUpper: 'Narek & Anna',
-        verse:
-            '"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."',
-        inviteTitle: 'Wedding Invitation',
-        inviteMessage:
-            'Together with their families,\nNarek and Anna\njoyfully invite you to celebrate\nthe beginning of their new life together.\nYour presence on this special day\nwould mean the world to them.',
-        family: '',
-        quote: '“Therefore what God has joined together, let no one separate.”',
-        quoteSource: 'Mark 10:9',
-        countdownTitle: 'Counting Down',
-        married: "We're Married!",
-        timelineTitle: 'Wedding Timeline',
-        mapButton: 'View on Map',
-        ceremony: {
-            time: '16:00',
-            title: 'Ceremony',
-            location: 'Surb Mariam Astvatsatsin Church',
-            address: 'Nork-Marash, Yerevan',
-            map: CHURCH_MAP,
-        },
-        reception: {
-            time: '17:30',
-            title: 'Reception',
-            location: 'Lazio Hall',
-            address: 'Kotayk Region, T-6-29, 31',
-            map: HALL_MAP,
-        },
-        dressTitle: 'Dress Code',
-        dressText:
-            'We kindly invite you to dress in elegant, timeless attire — soft neutrals and muted tones that echo the grace of the day.',
-        closing: 'With love, we await you',
-        days: 'Days',
-        hours: 'Hours',
-        minutes: 'Minutes',
-        seconds: 'Seconds',
+    names: 'Լինա',
+    namesUpper: 'ԼԻՆԱ',
+    coverTitle: 'Լինայի Սուրբ Մկրտության\nհրավեր',
+    openButton: 'ԲԱՑԵԼ',
+    verse:
+        'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+    inviteTitle: 'Ծնունդ և մկրտություն',
+    inviteMessage:
+        'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու մեր փոքրիկ Լինայի\nծննդյան և մկրտության լուսավոր ու օրհնված տոնին',
+    inviteNote:
+        'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+    family: 'Սիրով հրավիրում են\nԹովմասյանների ընտանիքը',
+    countdownTitle: 'Մնացել է',
+    completedText: 'Տոնը սկսված է!',
+    timelineTitle: 'Օրվա ծրագիր',
+    mapButton: 'Դիտել քարտեզում',
+    ceremony: {
+        time: '16:00',
+        title: 'Մկրտություն',
+        location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
+        address: 'Նորք Մարաշ',
+        map: CHURCH_MAP,
     },
-    am: {
-        names: 'Նարեկ եվ Աննա',
-        namesUpper: 'ՆԱՐԵԿ ԵՎ ԱՆՆԱ',
-        verse:
-            '«Ամբողջ աշխարհում ինձ համար ավելի հարազատ սիրտ չկա, քան քոնը։ Ամբողջ աշխարհում իմ սիրո նման սեր չկա։»',
-        inviteTitle: 'Հարսանյաց հրավեր',
-        inviteMessage:
-            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու Նարեկի և Աննայի\nհարսանյաց տոնին։ Ձեր\nներկայությունը մեր տոնն առավել\nջերմ ու հիշարժան կդարձնի։',
-        family: '',
-        quote: '«Արդ, ինչ որ Աստված միավորեց, մարդը թող չբաժանի»',
-        quoteSource: 'ՄԱՐԿՈՍ 10:9',
-        countdownTitle: 'Մնացել է',
-        married: 'Մենք ամուսնացանք!',
-        timelineTitle: 'Օրվա ծրագիր',
-        mapButton: 'Դիտել քարտեզում',
-        ceremony: {
-            time: '16:00',
-            title: 'Պսակադրություն',
-            location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
-            address: 'Նորք-Մարաշ, Երևան',
-            map: CHURCH_MAP,
-        },
-        reception: {
-            time: '17:30',
-            title: 'Հարսանյաց Հանդես',
-            location: 'Lazio Hall',
-            address: 'Կոտայքի մարզ, T-6-29, 31',
-            map: HALL_MAP,
-        },
-        dressTitle: 'Հագուստի ոճ',
-        dressText:
-            'Խնդրում ենք կրել էլեգանտ և դասական հագուստ՝ մեղմ և նուրբ երանգներով։',
-        closing: 'Սիրով սպասում ենք Ձեզ',
-        days: 'Days',
-        hours: 'Hours',
-        minutes: 'Minutes',
-        seconds: 'Seconds',
+    reception: {
+        time: '17:00',
+        title: 'Տոնական միջոցառում',
+        location: 'Սաֆիսա ռեստորանային համալիր',
+        address: 'Ջրվեժ 2-րդ թաղամաս',
+        map: HALL_MAP,
     },
+    closing: 'Սիրով սպասում ենք Ձեզ',
+    days: 'Օր',
+    hours: 'Ժամ',
+    minutes: 'Րոպե',
+    seconds: 'Վրկ',
 }
 
 function getTimeLeft(now) {
-    const diff = Math.max(0, WEDDING_DATE.getTime() - now.getTime())
+    const diff = Math.max(0, EVENT_DATE.getTime() - now.getTime())
     const total = Math.floor(diff / 1000)
     return {
         done: total <= 0,
@@ -127,14 +84,13 @@ function useReveal(enabled) {
 }
 
 export default function InvitationPage() {
-    const [lang, setLang] = useState('am')
     const [opened, setOpened] = useState(false)
     const [exiting, setExiting] = useState(false)
     const [playing, setPlaying] = useState(false)
     const [now, setNow] = useState(() => new Date())
     const audioRef = useRef(null)
     const rootRef = useReveal(opened)
-    const t = COPY[lang]
+    const t = COPY
     const timeLeft = useMemo(() => getTimeLeft(now), [now])
 
     useEffect(() => {
@@ -143,11 +99,8 @@ export default function InvitationPage() {
     }, [])
 
     useEffect(() => {
-        document.title =
-            lang === 'am'
-                ? 'Նարեկ եվ Աննա — Հարսանյաց հրավեր'
-                : 'Narek & Anna — Wedding Invitation'
-    }, [lang])
+        document.title = 'Լինա — Ծնունդ և մկրտություն'
+    }, [])
 
     const openInvite = () => {
         if (opened || exiting) return
@@ -180,37 +133,16 @@ export default function InvitationPage() {
     }
 
     return (
-        <div
-            className={`invite${lang === 'am' ? ' invite--hy' : ''}`}
-            ref={rootRef}
-        >
-            <audio ref={audioRef} src="/invitation/music.mp3" loop preload="none" />
+        <div className="invite invite--hy" ref={rootRef}>
+            <audio ref={audioRef} src="/invitation/music-baptism.mp3" loop preload="none" />
 
             <div className="controls">
-                <div className="controls__group">
-                    <button
-                        type="button"
-                        className={`chip${lang === 'en' ? ' is-active' : ''}`}
-                        onClick={() => setLang('en')}
-                        aria-label="English"
-                    >
-                        EN
-                    </button>
-                    <button
-                        type="button"
-                        className={`chip${lang === 'am' ? ' is-active' : ''}`}
-                        onClick={() => setLang('am')}
-                        aria-label="Armenian"
-                    >
-                        AM
-                    </button>
-                </div>
-                <div className="controls__group">
+                <div className="controls__group controls__group--end">
                     <button
                         type="button"
                         className="chip chip--icon"
                         onClick={toggleMusic}
-                        aria-label={playing ? 'Pause music' : 'Play music'}
+                        aria-label={playing ? 'Դադար' : 'Երաժշտություն'}
                     >
                         {playing ? '❚❚' : '▶'}
                     </button>
@@ -219,78 +151,73 @@ export default function InvitationPage() {
 
             {!opened && (
                 <div className={`cover${exiting ? ' is-exit' : ''}`}>
-                    <div
-                        className="cover__stage"
-                        onClick={openInvite}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                openInvite()
-                            }
-                        }}
-                        aria-label="Open invitation"
-                    >
+                    <div className="cover__stage">
                         <img
                             className="cover__bg"
                             src="/invitation/cover.jpg"
-                            alt="Cover Background"
+                            alt=""
                         />
-                        <div className="cover__veil" />
-                        <div className="cover__lace-wrap" aria-hidden="true">
-                            <img
-                                className="cover__lace"
-                                src="/invitation/lace.webp"
-                                alt=""
-                            />
+                        <div className="cover__veil cover__veil--photo" />
+
+                        <div className="cover__layout">
+                            <div className="cover__date-block">
+                                <div
+                                    className="cover__date-stack"
+                                    aria-label="28.10.2026"
+                                >
+                                    <span>28</span>
+                                    <span>10</span>
+                                    <span>26</span>
+                                </div>
+                                <span className="cover__date-rule" aria-hidden="true" />
+                            </div>
+
+                            <h1 className="cover__headline">{t.coverTitle}</h1>
+
+                            <div className="cover__open-wrap">
+                                <span className="cover__open-hint">սեղմե՛ք</span>
+                                <span className="cover__open-arrow" aria-hidden="true">
+                                    ↓
+                                </span>
+                                <button
+                                    type="button"
+                                    className="cover__open-btn"
+                                    onClick={openInvite}
+                                >
+                                    {t.openButton}
+                                </button>
+                            </div>
                         </div>
-                        <div className="cover__copy">
-                            <h1 className="cover__title">
-                                <span>Save the</span>
-                                <span>Date</span>
-                            </h1>
-                            <p className="cover__date">04 . 09 . 2026</p>
-                        </div>
-                        <img
-                            className="cover__wax"
-                            src="/invitation/wax.webp"
-                            alt="Open"
-                            onClick={(event) => {
-                                event.stopPropagation()
-                                openInvite()
-                            }}
-                        />
                     </div>
                 </div>
             )}
 
             {opened && (
                 <>
-                    <section className="hero">
-                        <img
-                            className="hero__bg"
-                            src="/invitation/cover.jpg"
-                            alt=""
-                        />
-                        <div className="hero__veil" />
-                        <div className="hero__content">
-                            <div className="hero__date" aria-label="04.09.2026">
-                                <span>04</span>
-                                <span>09</span>
-                                <span>26</span>
-                            </div>
-                            <h1 className="hero__names">{t.namesUpper}</h1>
-                            <p className="hero__verse">{t.verse}</p>
+                    <section className="hero-strip" aria-label="Լինա">
+                        <div className="hero-strip__grid">
+                            {['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg'].map(
+                                (file) => (
+                                    <div className="hero-strip__item" key={file}>
+                                        <img
+                                            src={`/invitation/${file}`}
+                                            alt=""
+                                        />
+                                    </div>
+                                )
+                            )}
+                        </div>
+                        <div className="hero-strip__caption reveal">
+                            <h1 className="hero-strip__name">{t.namesUpper}</h1>
+                            <p className="hero-strip__verse">{t.verse}</p>
                         </div>
                     </section>
 
                     <section className="section section--cream invitation">
                         <div className="invitation__crest-row reveal">
-                            <span>04 / 09</span>
+                            <span>28 / 10</span>
                             <div className="invitation__crest" aria-hidden="true">
-                                <span>N</span>
-                                <em>&</em>
-                                <span>A</span>
+                                <span>L</span>
                             </div>
                             <span>2026</span>
                         </div>
@@ -301,6 +228,11 @@ export default function InvitationPage() {
                             alt=""
                         />
                         <p className="body-copy reveal">{t.inviteMessage}</p>
+                        {t.inviteNote ? (
+                            <p className="body-copy invitation__note reveal">
+                                {t.inviteNote}
+                            </p>
+                        ) : null}
                         {t.family ? (
                             <p className="invitation__family reveal">{t.family}</p>
                         ) : null}
@@ -310,6 +242,8 @@ export default function InvitationPage() {
                         <div className="gallery__track">
                             {[
                                 'gallery-1.jpg',
+                                'gallery-2.jpg',
+                                'gallery-3.jpg',
                                 'gallery-4.jpg',
                                 'gallery-5.jpg',
                                 'gallery-6.jpg',
@@ -322,14 +256,9 @@ export default function InvitationPage() {
                         </div>
                     </section>
 
-                    <section className="section section--cream quote">
-                        <p className="quote__text reveal">{t.quote}</p>
-                        <p className="quote__source reveal">{t.quoteSource}</p>
-                    </section>
-
                     <section className="section section--cream countdown">
                         <h2 className="script-title reveal">
-                            {timeLeft.done ? t.married : t.countdownTitle}
+                            {timeLeft.done ? t.completedText : t.countdownTitle}
                         </h2>
                         <img
                             className="ornament reveal"
@@ -367,41 +296,30 @@ export default function InvitationPage() {
                         )}
                     </section>
 
-                    <section className="timeline-block">
-                        <img
-                            className="timeline-block__bg"
-                            src="/invitation/gallery-5.jpg"
-                            alt=""
-                        />
-                        <div className="timeline-block__veil" />
-                        <div className="timeline-block__content reveal">
-                            <h2 className="timeline-block__heading">
-                                {t.timelineTitle}
-                            </h2>
+                    <section className="day-plan section section--cream">
+                        <h2 className="script-title reveal">{t.timelineTitle}</h2>
+
+                        <article className="day-card reveal">
                             <img
-                                className="timeline-block__icon"
-                                src="/invitation/rings.webp"
+                                className="day-card__art day-card__art--church"
+                                src="/invitation/icon-church.svg"
                                 alt=""
                             />
-                            <p className="timeline-block__time">
-                                {t.ceremony.time}
-                            </p>
-                            <h3 className="timeline-block__title">
-                                {t.ceremony.title}
-                            </h3>
+                            <p className="day-card__time">{t.ceremony.time}</p>
+                            <h3 className="day-card__title">{t.ceremony.title}</h3>
                             {t.ceremony.location ? (
-                                <p className="timeline-block__place">
+                                <p className="day-card__place">
                                     {t.ceremony.location}
                                 </p>
                             ) : null}
                             {t.ceremony.address ? (
-                                <p className="timeline-block__address">
+                                <p className="day-card__address">
                                     {t.ceremony.address}
                                 </p>
                             ) : null}
                             {t.ceremony.map ? (
                                 <a
-                                    className="map-btn"
+                                    className="day-card__map"
                                     href={t.ceremony.map}
                                     target="_blank"
                                     rel="noreferrer"
@@ -409,47 +327,42 @@ export default function InvitationPage() {
                                     {t.mapButton}
                                 </a>
                             ) : null}
-                        </div>
-                    </section>
+                        </article>
 
-                    <section className="timeline-block">
-                        <img
-                            className="timeline-block__bg timeline-block__bg--reception"
-                            src="/invitation/hall.jpg"
-                            alt=""
-                        />
-                        <div className="timeline-block__veil" />
-                        <div className="timeline-block__content reveal">
+                        <div className="day-plan__bridge reveal">
                             <img
-                                className="timeline-block__icon"
-                                src="/invitation/glass.webp"
+                                className="day-plan__bridge-cups"
+                                src="/invitation/icon-venue.svg"
                                 alt=""
                             />
-                            <p className="timeline-block__time">
-                                {t.reception.time}
-                            </p>
-                            <h3 className="timeline-block__title">
-                                {t.reception.title}
-                            </h3>
-                            <p className="timeline-block__place">
-                                {t.reception.location}
-                            </p>
-                            <p className="timeline-block__address">
+                            <img
+                                className="day-plan__bridge-house"
+                                src="/invitation/house-sketch.png"
+                                alt=""
+                            />
+                        </div>
+
+                        <article className="day-card reveal">
+                            <p className="day-card__time">{t.reception.time}</p>
+                            <h3 className="day-card__title">{t.reception.title}</h3>
+                            <p className="day-card__place">{t.reception.location}</p>
+                            <p className="day-card__address">
                                 {t.reception.address}
                             </p>
-                            <a
-                                className="map-btn"
-                                href={t.reception.map}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {t.mapButton}
-                            </a>
-                        </div>
+                            {t.reception.map ? (
+                                <a
+                                    className="day-card__map"
+                                    href={t.reception.map}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {t.mapButton}
+                                </a>
+                            ) : null}
+                        </article>
                     </section>
 
                     <section className="closing">
-                       
                         <p className="closing__message reveal">{t.closing}</p>
                     </section>
                 </>
