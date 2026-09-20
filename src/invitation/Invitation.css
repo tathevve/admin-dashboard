@@ -691,6 +691,17 @@ a {
     text-align: center;
 }
 
+.day-plan__bridge {
+    width: min(92%, 22rem);
+    margin: 0.25rem auto;
+}
+
+.day-plan__bridge img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .day-plan__cups {
     display: flex;
     justify-content: center;
