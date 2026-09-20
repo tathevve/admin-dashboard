@@ -154,10 +154,10 @@ export default function InvitationPage() {
                     <div className="cover__stage">
                         <img
                             className="cover__bg"
-                            src="/invitation/open-bg.png"
+                            src="/invitation/cover.jpg"
                             alt=""
                         />
-                        <div className="cover__veil cover__veil--soft" />
+                        <div className="cover__veil cover__veil--photo" />
 
                         <div className="cover__layout">
                             <div className="cover__date-block">
