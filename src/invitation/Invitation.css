@@ -692,36 +692,21 @@ a {
 }
 
 .day-plan__bridge {
-    width: min(92%, 22rem);
-    margin: 0.25rem auto;
-}
-
-.day-plan__bridge img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.day-plan__cups {
     display: flex;
-    justify-content: center;
-    margin-top: 0.5rem;
-    margin-bottom: -1.25rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: min(100%, 22rem);
+    margin: 0.5rem auto 0;
 }
 
-.day-plan__cups img {
+.day-plan__bridge-cups {
     width: min(28vw, 5.5rem);
     height: auto;
 }
 
-.day-plan__header {
-    width: min(92%, 26rem);
-    margin: 0 auto;
-}
-
-.day-plan__header img {
-    display: block;
-    width: 100%;
+.day-plan__bridge-house {
+    width: min(70vw, 15rem);
     height: auto;
 }
 

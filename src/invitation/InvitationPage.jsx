@@ -331,7 +331,13 @@ export default function InvitationPage() {
 
                         <div className="day-plan__bridge reveal">
                             <img
-                                src="/invitation/under-church.png"
+                                className="day-plan__bridge-cups"
+                                src="/invitation/icon-venue.svg"
+                                alt=""
+                            />
+                            <img
+                                className="day-plan__bridge-house"
+                                src="/invitation/house-sketch.png"
                                 alt=""
                             />
                         </div>
