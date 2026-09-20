@@ -175,8 +175,9 @@ export default function InvitationPage() {
                             <h1 className="cover__headline">{t.coverTitle}</h1>
 
                             <div className="cover__open-wrap">
+                                <span className="cover__open-hint">սեղմե՛ք</span>
                                 <span className="cover__open-arrow" aria-hidden="true">
-                                    →
+                                    ↓
                                 </span>
                                 <button
                                     type="button"
@@ -193,21 +194,22 @@ export default function InvitationPage() {
 
             {opened && (
                 <>
-                    <section className="hero">
-                        <img
-                            className="hero__bg"
-                            src="/invitation/cover.jpg"
-                            alt=""
-                        />
-                        <div className="hero__veil" />
-                        <div className="hero__content">
-                            <div className="hero__date" aria-label="28.10.2026">
-                                <span>28</span>
-                                <span>10</span>
-                                <span>26</span>
-                            </div>
-                            <h1 className="hero__names">{t.namesUpper}</h1>
-                            <p className="hero__verse">{t.verse}</p>
+                    <section className="hero-strip" aria-label="Լինա">
+                        <div className="hero-strip__grid">
+                            {['hero-1.jpg', 'hero-2.jpg', 'hero-3.jpg'].map(
+                                (file) => (
+                                    <div className="hero-strip__item" key={file}>
+                                        <img
+                                            src={`/invitation/${file}`}
+                                            alt=""
+                                        />
+                                    </div>
+                                )
+                            )}
+                        </div>
+                        <div className="hero-strip__caption reveal">
+                            <h1 className="hero-strip__name">{t.namesUpper}</h1>
+                            <p className="hero-strip__verse">{t.verse}</p>
                         </div>
                     </section>
 
