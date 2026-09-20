@@ -306,7 +306,63 @@ a {
     }
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero strip ---------- */
+.hero-strip {
+    background: var(--cream);
+    padding: 1.35rem 0.65rem 2rem;
+}
+
+.hero-strip__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: min(100%, 980px);
+    margin: 0 auto;
+}
+
+.hero-strip__item {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: #e8e2d8;
+}
+
+.hero-strip__item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.hero-strip__caption {
+    text-align: center;
+    padding: 1.75rem 1.25rem 0.5rem;
+}
+
+.hero-strip__name {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.hero-strip__verse {
+    margin: 0 auto;
+    max-width: 26rem;
+    color: var(--ink-soft);
+    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+    line-height: 1.65;
+    white-space: pre-line;
+}
+
+/* ---------- Hero (legacy full-bleed) ---------- */
 .hero {
     position: relative;
     width: 100%;
