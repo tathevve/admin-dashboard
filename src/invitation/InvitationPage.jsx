@@ -134,7 +134,7 @@ export default function InvitationPage() {
 
     return (
         <div className="invite invite--hy" ref={rootRef}>
-            <audio ref={audioRef} src="/invitation/music.mp3" loop preload="none" />
+            <audio ref={audioRef} src="/invitation/music-baptism.mp3" loop preload="none" />
 
             <div className="controls">
                 <div className="controls__group controls__group--end">
