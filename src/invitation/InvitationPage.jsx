@@ -1,45 +1,42 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import './Invitation.css'
 
-const WEDDING_DATE = new Date('2026-09-04T17:30:00')
-const CHURCH_MAP =
-    'https://yandex.com/maps/org/surb_mariam_astvatsatsin_yekeghetsi/15438436392/?ll=44.540385%2C40.180340&z=14'
-const HALL_MAP =
-    'https://yandex.com/maps/org/latsio_hol/215251153533/?ll=44.591922%2C40.193585&z=16'
+const EVENT_DATE = new Date('2026-10-28T16:00:00')
+const CHURCH_MAP = ''
+const HALL_MAP = ''
 
 const COPY = {
     en: {
-        names: 'Narek & Anna',
-        namesUpper: 'Narek & Anna',
+        names: 'Lina',
+        namesUpper: 'Lina',
         verse:
-            '"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."',
-        inviteTitle: 'Wedding Invitation',
+            'May this day be filled with warmth, smiles, and memories that stay in our hearts for years to come.',
+        inviteTitle: 'Birthday & Baptism',
         inviteMessage:
-            'Together with their families,\nNarek and Anna\njoyfully invite you to celebrate\nthe beginning of their new life together.\nYour presence on this special day\nwould mean the world to them.',
-        family: '',
-        quote: '“Therefore what God has joined together, let no one separate.”',
-        quoteSource: 'Mark 10:9',
+            'With love, we invite you\nto celebrate our little Lina’s\nbright and blessed birthday and baptism.',
+        inviteNote:
+            'May this day be filled with warmth, smiles, and memorable moments that will remain in our hearts for many years.',
+        family: 'With love,\nthe Tovmasyan family',
+        quote: '',
+        quoteSource: '',
         countdownTitle: 'Counting Down',
-        married: "We're Married!",
-        timelineTitle: 'Wedding Timeline',
+        completedText: 'The celebration has begun!',
+        timelineTitle: 'The Day',
         mapButton: 'View on Map',
         ceremony: {
             time: '16:00',
-            title: 'Ceremony',
+            title: 'Baptism',
             location: 'Surb Mariam Astvatsatsin Church',
             address: 'Nork-Marash, Yerevan',
             map: CHURCH_MAP,
         },
         reception: {
-            time: '17:30',
-            title: 'Reception',
-            location: 'Lazio Hall',
-            address: 'Kotayk Region, T-6-29, 31',
+            time: '17:00',
+            title: 'Celebration',
+            location: 'Safisa Restaurant Complex',
+            address: 'Jrvezh, 2nd district',
             map: HALL_MAP,
         },
-        dressTitle: 'Dress Code',
-        dressText:
-            'We kindly invite you to dress in elegant, timeless attire — soft neutrals and muted tones that echo the grace of the day.',
         closing: 'With love, we await you',
         days: 'Days',
         hours: 'Hours',
@@ -47,37 +44,36 @@ const COPY = {
         seconds: 'Seconds',
     },
     am: {
-        names: 'Նարեկ եվ Աննա',
-        namesUpper: 'ՆԱՐԵԿ ԵՎ ԱՆՆԱ',
+        names: 'Լինա',
+        namesUpper: 'ԼԻՆԱ',
         verse:
-            '«Ամբողջ աշխարհում ինձ համար ավելի հարազատ սիրտ չկա, քան քոնը։ Ամբողջ աշխարհում իմ սիրո նման սեր չկա։»',
-        inviteTitle: 'Հարսանյաց հրավեր',
+            'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+        inviteTitle: 'Ծնունդ և մկրտություն',
         inviteMessage:
-            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու Նարեկի և Աննայի\nհարսանյաց տոնին։ Ձեր\nներկայությունը մեր տոնն առավել\nջերմ ու հիշարժան կդարձնի։',
-        family: '',
-        quote: '«Արդ, ինչ որ Աստված միավորեց, մարդը թող չբաժանի»',
-        quoteSource: 'ՄԱՐԿՈՍ 10:9',
+            'Սիրով հրավիրում ենք Ձեզ\nմասնակցելու մեր փոքրիկ Լինայի\nծննդյան և մկրտության լուսավոր ու օրհնված տոնին',
+        inviteNote:
+            'Թող այս օրը լցվի ջերմությամբ, ժպիտներով և հիշարժան պահերով,\nորոնք կմնան մեր սրտերում երկար տարիներ',
+        family: 'Սիրով հրավիրում են\nԹովմասյանների ընտանիքը',
+        quote: '',
+        quoteSource: '',
         countdownTitle: 'Մնացել է',
-        married: 'Մենք ամուսնացանք!',
+        completedText: 'Տոնը սկսված է!',
         timelineTitle: 'Օրվա ծրագիր',
         mapButton: 'Դիտել քարտեզում',
         ceremony: {
             time: '16:00',
-            title: 'Պսակադրություն',
+            title: 'Մկրտություն',
             location: 'Սուրբ Մարիամ Աստվածածին եկեղեցի',
-            address: 'Նորք-Մարաշ, Երևան',
+            address: 'Նորք Մարաշ',
             map: CHURCH_MAP,
         },
         reception: {
-            time: '17:30',
-            title: 'Հարսանյաց Հանդես',
-            location: 'Lazio Hall',
-            address: 'Կոտայքի մարզ, T-6-29, 31',
+            time: '17:00',
+            title: 'Տոնական միջոցառում',
+            location: 'Սաֆիսա ռեստորանային համալիր',
+            address: 'Ջրվեժ 2-րդ թաղամաս',
             map: HALL_MAP,
         },
-        dressTitle: 'Հագուստի ոճ',
-        dressText:
-            'Խնդրում ենք կրել էլեգանտ և դասական հագուստ՝ մեղմ և նուրբ երանգներով։',
         closing: 'Սիրով սպասում ենք Ձեզ',
         days: 'Days',
         hours: 'Hours',
@@ -87,7 +83,7 @@ const COPY = {
 }
 
 function getTimeLeft(now) {
-    const diff = Math.max(0, WEDDING_DATE.getTime() - now.getTime())
+    const diff = Math.max(0, EVENT_DATE.getTime() - now.getTime())
     const total = Math.floor(diff / 1000)
     return {
         done: total <= 0,
@@ -145,8 +141,8 @@ export default function InvitationPage() {
     useEffect(() => {
         document.title =
             lang === 'am'
-                ? 'Նարեկ եվ Աննա — Հարսանյաց հրավեր'
-                : 'Narek & Anna — Wedding Invitation'
+                ? 'Լինա — Ծնունդ և մկրտություն'
+                : 'Lina — Birthday & Baptism'
     }, [lang])
 
     const openInvite = () => {
@@ -249,7 +245,7 @@ export default function InvitationPage() {
                                 <span>Save the</span>
                                 <span>Date</span>
                             </h1>
-                            <p className="cover__date">04 . 09 . 2026</p>
+                            <p className="cover__date">28 . 10 . 2026</p>
                         </div>
                         <img
                             className="cover__wax"
@@ -274,9 +270,9 @@ export default function InvitationPage() {
                         />
                         <div className="hero__veil" />
                         <div className="hero__content">
-                            <div className="hero__date" aria-label="04.09.2026">
-                                <span>04</span>
-                                <span>09</span>
+                            <div className="hero__date" aria-label="28.10.2026">
+                                <span>28</span>
+                                <span>10</span>
                                 <span>26</span>
                             </div>
                             <h1 className="hero__names">{t.namesUpper}</h1>
@@ -286,11 +282,9 @@ export default function InvitationPage() {
 
                     <section className="section section--cream invitation">
                         <div className="invitation__crest-row reveal">
-                            <span>04 / 09</span>
+                            <span>28 / 10</span>
                             <div className="invitation__crest" aria-hidden="true">
-                                <span>N</span>
-                                <em>&</em>
-                                <span>A</span>
+                                <span>L</span>
                             </div>
                             <span>2026</span>
                         </div>
@@ -301,6 +295,11 @@ export default function InvitationPage() {
                             alt=""
                         />
                         <p className="body-copy reveal">{t.inviteMessage}</p>
+                        {t.inviteNote ? (
+                            <p className="body-copy invitation__note reveal">
+                                {t.inviteNote}
+                            </p>
+                        ) : null}
                         {t.family ? (
                             <p className="invitation__family reveal">{t.family}</p>
                         ) : null}
@@ -322,14 +321,9 @@ export default function InvitationPage() {
                         </div>
                     </section>
 
-                    <section className="section section--cream quote">
-                        <p className="quote__text reveal">{t.quote}</p>
-                        <p className="quote__source reveal">{t.quoteSource}</p>
-                    </section>
-
                     <section className="section section--cream countdown">
                         <h2 className="script-title reveal">
-                            {timeLeft.done ? t.married : t.countdownTitle}
+                            {timeLeft.done ? t.completedText : t.countdownTitle}
                         </h2>
                         <img
                             className="ornament reveal"
@@ -437,19 +431,20 @@ export default function InvitationPage() {
                             <p className="timeline-block__address">
                                 {t.reception.address}
                             </p>
-                            <a
-                                className="map-btn"
-                                href={t.reception.map}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {t.mapButton}
-                            </a>
+                            {t.reception.map ? (
+                                <a
+                                    className="map-btn"
+                                    href={t.reception.map}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {t.mapButton}
+                                </a>
+                            ) : null}
                         </div>
                     </section>
 
                     <section className="closing">
-                       
                         <p className="closing__message reveal">{t.closing}</p>
                     </section>
                 </>
