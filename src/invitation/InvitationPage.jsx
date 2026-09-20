@@ -294,41 +294,37 @@ export default function InvitationPage() {
                         )}
                     </section>
 
-                    <section className="timeline-block">
-                        <img
-                            className="timeline-block__bg"
-                            src="/invitation/church.png"
-                            alt=""
-                        />
-                        <div className="timeline-block__veil" />
-                        <div className="timeline-block__content reveal">
-                            <h2 className="timeline-block__heading">
-                                {t.timelineTitle}
-                            </h2>
+                    <section className="day-plan section section--cream">
+                        <div className="day-plan__intro reveal">
                             <img
-                                className="timeline-block__icon"
-                                src="/invitation/rings.webp"
+                                className="day-plan__flourish"
+                                src="/invitation/icon-ornament.svg"
                                 alt=""
                             />
-                            <p className="timeline-block__time">
-                                {t.ceremony.time}
-                            </p>
-                            <h3 className="timeline-block__title">
-                                {t.ceremony.title}
-                            </h3>
+                            <h2 className="script-title">{t.timelineTitle}</h2>
+                        </div>
+
+                        <article className="day-card reveal">
+                            <img
+                                className="day-card__art day-card__art--church"
+                                src="/invitation/icon-church.svg"
+                                alt=""
+                            />
+                            <p className="day-card__time">{t.ceremony.time}</p>
+                            <h3 className="day-card__title">{t.ceremony.title}</h3>
                             {t.ceremony.location ? (
-                                <p className="timeline-block__place">
+                                <p className="day-card__place">
                                     {t.ceremony.location}
                                 </p>
                             ) : null}
                             {t.ceremony.address ? (
-                                <p className="timeline-block__address">
+                                <p className="day-card__address">
                                     {t.ceremony.address}
                                 </p>
                             ) : null}
                             {t.ceremony.map ? (
                                 <a
-                                    className="map-btn"
+                                    className="day-card__map"
                                     href={t.ceremony.map}
                                     target="_blank"
                                     rel="noreferrer"
@@ -336,37 +332,23 @@ export default function InvitationPage() {
                                     {t.mapButton}
                                 </a>
                             ) : null}
-                        </div>
-                    </section>
+                        </article>
 
-                    <section className="timeline-block">
-                        <img
-                            className="timeline-block__bg timeline-block__bg--reception"
-                            src="/invitation/hall.png"
-                            alt=""
-                        />
-                        <div className="timeline-block__veil" />
-                        <div className="timeline-block__content reveal">
+                        <article className="day-card reveal">
                             <img
-                                className="timeline-block__icon"
-                                src="/invitation/glass.webp"
+                                className="day-card__art day-card__art--venue"
+                                src="/invitation/icon-venue.svg"
                                 alt=""
                             />
-                            <p className="timeline-block__time">
-                                {t.reception.time}
-                            </p>
-                            <h3 className="timeline-block__title">
-                                {t.reception.title}
-                            </h3>
-                            <p className="timeline-block__place">
-                                {t.reception.location}
-                            </p>
-                            <p className="timeline-block__address">
+                            <p className="day-card__time">{t.reception.time}</p>
+                            <h3 className="day-card__title">{t.reception.title}</h3>
+                            <p className="day-card__place">{t.reception.location}</p>
+                            <p className="day-card__address">
                                 {t.reception.address}
                             </p>
                             {t.reception.map ? (
                                 <a
-                                    className="map-btn"
+                                    className="day-card__map"
                                     href={t.reception.map}
                                     target="_blank"
                                     rel="noreferrer"
@@ -374,7 +356,7 @@ export default function InvitationPage() {
                                     {t.mapButton}
                                 </a>
                             ) : null}
-                        </div>
+                        </article>
                     </section>
 
                     <section className="closing">

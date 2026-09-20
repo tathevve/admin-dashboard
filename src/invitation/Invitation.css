@@ -609,6 +609,99 @@ a {
 }
 
 /* ---------- Timeline ---------- */
+/* ---------- Day plan (peonies-style) ---------- */
+.day-plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.75rem;
+    text-align: center;
+}
+
+.day-plan__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.day-plan__flourish {
+    width: min(72vw, 18rem);
+    height: auto;
+    opacity: 0.85;
+}
+
+.day-card {
+    width: min(100%, 22rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.day-card__art {
+    width: min(70vw, 15rem);
+    height: auto;
+    margin-bottom: 0.75rem;
+}
+
+.day-card__art--venue {
+    width: min(28vw, 5.5rem);
+}
+
+.day-card__time {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+}
+
+.day-card__title {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-armenian);
+    font-size: clamp(1.15rem, 4.5vw, 1.35rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+}
+
+.day-card__place {
+    margin: 0.45rem 0 0;
+    font-family: var(--font-armenian);
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+}
+
+.day-card__address {
+    margin: 0.15rem 0 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+}
+
+.day-card__map {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.day-card__map:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
+/* ---------- Timeline (legacy photo blocks kept for safety) ---------- */
 .timeline-block {
     position: relative;
     min-height: min(70svh, 640px);
